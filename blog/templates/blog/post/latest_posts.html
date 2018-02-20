@@ -1,0 +1,8 @@
+<div class="jumbotron">
+    <div>Latest Posts</div>
+    <ul>
+        {% for post in latest_posts %}
+            <li><a href="{{ post.get_absulute_url }}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>

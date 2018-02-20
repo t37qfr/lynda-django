@@ -1,0 +1,37 @@
+{% load blog_tags %}
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+
+<div id="content">
+    {% block content %}
+
+    {% endblock %}
+</div>
+<div id="sidebar">
+    <h2>My blog</h2>
+    <p>This is my blog.</p>
+</div>
+
+<p class="jumbotron">{% total_post %} posts so far.</p>
+<hr>
+{% show_latest_posts 2 %}
+<hr>
+<h3>Most common posts:</h3>
+{% get_most_commented_posts 1 as most_commented_posts %}
+<ul>
+    {% for post in most_commented_posts %}
+        <li><a href="{{ post.get_absulute_url }}">{{post.title }}</a></li>
+    {% endfor %}
+</ul>
+</body>
+</html>
