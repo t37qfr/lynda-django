@@ -8,6 +8,7 @@
         <p>Your username and password didn't match. Please try again.</p>
     {% else %}
         <p>Please, use the following form to log-in:</p>
+        <p>if you do't have an ccount <a href="{% url 'account:register' %}">register here</a></p>
         <form action="." method="POST">{% csrf_token %}
             {{ form.as_p }}
             <!--hidden paramerter = URL, redirect after user logged in-->
