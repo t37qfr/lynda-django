@@ -30,6 +30,9 @@ INSTALLED_APPS = (
     'account',
     #if other login views this have to be above admin
     'django.contrib.admin',
+    'images',
+    'shop',
+    'cart',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,6 +108,17 @@ Handle Media Files
 '''
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+
+
+'''
+Extend AUTHENTICATION_BACKEND
+-Email authentication for account
+'''
+AUTHENTICATION_BACKENDS = {
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+}
+
 
 '''
 base login urls

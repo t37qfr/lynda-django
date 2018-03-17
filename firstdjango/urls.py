@@ -14,12 +14,16 @@ Django cannot find it under account: namespace
 
 
 urlpatterns  = [
-    url(r'^$',views.index,name='index'),
+    url(r'^shop/', include('shop.urls', namespace='shop')),
+    url(r'^cart/', include('cart.urls', namespace='cart')),
     url(r'^blog/',include('blog.urls',namespace='blog',app_name='blog')),
+    url(r'^images/',include('images.urls',namespace='images',app_name='images')),
     url(r'^item/(?P<id>\d+)/', views.item_detail, name='item_detail'),
     # ACCOUNT
     url(r'^account/', include('account.urls', namespace='account', app_name='account')),
     url(r'^admin/', include(admin.site.urls)),
+    #social auth
+    url(r'^social-auth/',include('social.apps.django_app.urls',namespace='social')),
 ]
 
 '''
